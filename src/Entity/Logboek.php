@@ -34,7 +34,7 @@ class Logboek
     /**
      * @ORM\Column(type="integer")
      */
-    private $Truck;
+    /*private $Truck;*/
 
     /**
      * @ORM\Column(type="integer", nullable=true)
