@@ -17,57 +17,57 @@ class Truck
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
-    private $Kenteken;
+    private $kenteken;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $Merk;
+    private $merk;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $Bouwjaar;
+    private $bouwjaar;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getKenteken(): ?int
+    public function getKenteken(): ?string
     {
-        return $this->Kenteken;
+        return $this->kenteken;
     }
 
-    public function setKenteken(int $Kenteken): self
+    public function setKenteken(?string $kenteken): self
     {
-        $this->Kenteken = $Kenteken;
+        $this->kenteken = $kenteken;
 
         return $this;
     }
 
     public function getMerk(): ?string
     {
-        return $this->Merk;
+        return $this->merk;
     }
 
-    public function setMerk(?string $Merk): self
+    public function setMerk(?string $merk): self
     {
-        $this->Merk = $Merk;
+        $this->merk = $merk;
 
         return $this;
     }
 
     public function getBouwjaar(): ?int
     {
-        return $this->Bouwjaar;
+        return $this->bouwjaar;
     }
 
-    public function setBouwjaar(?int $Bouwjaar): self
+    public function setBouwjaar(?int $bouwjaar): self
     {
-        $this->Bouwjaar = $Bouwjaar;
+        $this->bouwjaar = $bouwjaar;
 
         return $this;
     }

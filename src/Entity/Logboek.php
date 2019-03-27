@@ -17,181 +17,178 @@ class Logboek
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $Begeleidingsbrief;
-
-    /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $Datum;
-
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $Chauffeur;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    /*private $Truck;*/
+    private $userId;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $AantalM3;
+    private $brief_nr;
 
     /**
-     * @ORM\Column(type="string", length=35, nullable=true)
+     * @ORM\Column(type="date", nullable=true)
      */
-    private $Laadlocatie;
+    private $datum;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     */
+    private $chauffeurId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Truck")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $truckId;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $kubs;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $laadplaats;
 
     /**
      * @ORM\Column(type="time", nullable=true)
      */
-    private $Tijdvertrek;
+    private $vertrektijd;
 
     /**
-     * @ORM\Column(type="string", length=35, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $Bestemming;
+    private $bestemming;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $Evenement;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $User_id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $truck;
+    private $evenement;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getBegeleidingsbrief(): ?string
+    public function getUserId(): ?User
     {
-        return $this->Begeleidingsbrief;
+        return $this->userId;
     }
 
-    public function setBegeleidingsbrief(?string $Begeleidingsbrief): self
+    public function setUserId(?User $userId): self
     {
-        $this->Begeleidingsbrief = $Begeleidingsbrief;
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    public function getBriefNr(): ?int
+    {
+        return $this->brief_nr;
+    }
+
+    public function setBriefNr(?int $brief_nr): self
+    {
+        $this->brief_nr = $brief_nr;
 
         return $this;
     }
 
     public function getDatum(): ?\DateTimeInterface
     {
-        return $this->Datum;
+        return $this->datum;
     }
 
-    public function setDatum(?\DateTimeInterface $Datum): self
+    public function setDatum(?\DateTimeInterface $datum): self
     {
-        $this->Datum = $Datum;
+        $this->datum = $datum;
 
         return $this;
     }
 
-    public function getChauffeur(): ?string
+    public function getChauffeurId(): ?User
     {
-        return $this->Chauffeur;
+        return $this->chauffeurId;
     }
 
-    public function setChauffeur(?string $Chauffeur): self
+    public function setChauffeurId(?User $chauffeurId): self
     {
-        $this->Chauffeur = $Chauffeur;
+        $this->chauffeurId = $chauffeurId;
 
         return $this;
     }
 
-    public function getTruck(): ?int
+    public function getTruckId(): ?Truck
     {
-        return $this->Truck;
+        return $this->truckId;
     }
 
-    public function setTruck(int $Truck): self
+    public function setTruckId(?Truck $truckId): self
     {
-        $this->Truck = $Truck;
+        $this->truckId = $truckId;
 
         return $this;
     }
 
-    public function getAantalM3(): ?int
+    public function getKubs(): ?int
     {
-        return $this->AantalM3;
+        return $this->kubs;
     }
 
-    public function setAantalM3(?int $AantalM3): self
+    public function setKubs(?int $kubs): self
     {
-        $this->AantalM3 = $AantalM3;
+        $this->kubs = $kubs;
 
         return $this;
     }
 
-    public function getLaadlocatie(): ?string
+    public function getLaadplaats(): ?string
     {
-        return $this->Laadlocatie;
+        return $this->laadplaats;
     }
 
-    public function setLaadlocatie(?string $Laadlocatie): self
+    public function setLaadplaats(?string $laadplaats): self
     {
-        $this->Laadlocatie = $Laadlocatie;
+        $this->laadplaats = $laadplaats;
 
         return $this;
     }
 
-    public function getTijdvertrek(): ?\DateTimeInterface
+    public function getVertrektijd(): ?\DateTimeInterface
     {
-        return $this->Tijdvertrek;
+        return $this->vertrektijd;
     }
 
-    public function setTijdvertrek(?\DateTimeInterface $Tijdvertrek): self
+    public function setVertrektijd(?\DateTimeInterface $vertrektijd): self
     {
-        $this->Tijdvertrek = $Tijdvertrek;
+        $this->vertrektijd = $vertrektijd;
 
         return $this;
     }
 
     public function getBestemming(): ?string
     {
-        return $this->Bestemming;
+        return $this->bestemming;
     }
 
-    public function setBestemming(?string $Bestemming): self
+    public function setBestemming(?string $bestemming): self
     {
-        $this->Bestemming = $Bestemming;
+        $this->bestemming = $bestemming;
 
         return $this;
     }
 
-    public function getEvenement(): ?bool
+    public function getEvenement(): ?string
     {
-        return $this->Evenement;
+        return $this->evenement;
     }
 
-    public function setEvenement(bool $Evenement): self
+    public function setEvenement(?string $evenement): self
     {
-        $this->Evenement = $Evenement;
-
-        return $this;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->User_id;
-    }
-
-    public function setUserId(int $User_id): self
-    {
-        $this->User_id = $User_id;
+        $this->evenement = $evenement;
 
         return $this;
     }
